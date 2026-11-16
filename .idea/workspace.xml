@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="efe48b7b-646c-4cef-9539-eb8062ac8bd1" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Vitimip&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Vitimip/instituto-mao-amiga.git&quot;,
+    &quot;accountId&quot;: &quot;7bdc3c19-fe1e-42fd-a7c5-6de1f79575b7&quot;
+  }
+}</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.6200418012975049" />
+      <entry key="MS500" value="2.8505379776650397" />
+      <entry key="S2" value="6.192312013347259" />
+      <entry key="S5" value="8.894535002408652" />
+      <entry key="S10" value="10.271777270495623" />
+      <entry key="S30" value="12.2251273413852" />
+      <entry key="S60" value="16.88262275795504" />
+      <entry key="M2" value="27.696129024607604" />
+      <entry key="M5" value="52.708781143575365" />
+      <entry key="M10" value="81.0714604382246" />
+      <entry key="M15" value="103.31448467167225" />
+      <entry key="M30" value="150.82185249910006" />
+      <entry key="H1" value="198.65987649517405" />
+      <entry key="H2" value="234.6168782156675" />
+      <entry key="H4" value="256.97799730250404" />
+      <entry key="D1" value="278.3808961623109" />
+      <entry key="W1" value="282.33282205149067" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.5901991484313016" />
+      <entry key="MS500" value="2.8130984838664412" />
+      <entry key="S2" value="6.113096671215983" />
+      <entry key="S5" value="8.840480615195629" />
+      <entry key="S10" value="10.239234081653992" />
+      <entry key="S30" value="12.210835463138714" />
+      <entry key="S60" value="16.87091792452756" />
+      <entry key="M2" value="27.685767969150554" />
+      <entry key="M5" value="52.700994292337256" />
+      <entry key="M10" value="81.0655111628179" />
+      <entry key="M15" value="103.30941701103465" />
+      <entry key="M30" value="150.81813265292678" />
+      <entry key="H1" value="198.65742206434678" />
+      <entry key="H2" value="234.61542906290416" />
+      <entry key="H4" value="256.977204030228" />
+      <entry key="D1" value="278.3807530267638" />
+      <entry key="W1" value="282.3328013159318" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3MCc4hkoUpLo63cOkg8QQdjpV6s" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/vitor/OneDrive/Desktop/instituto-mao-amiga",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2df11533d9fe-intellij.indexing.shared.core-IU-262.11879.100" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.11879.100" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="efe48b7b-646c-4cef-9539-eb8062ac8bd1" name="Changes" comment="" />
+      <created>1794857801072</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1794857801072</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
