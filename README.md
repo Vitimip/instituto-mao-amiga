@@ -2,6 +2,9 @@
 
 Aplicativo mobile em React Native (Expo) que consome a API REST Spring Boot (`https://github.com/Vitimip/Beinstituto_mao_amiga`) para listagem paginada, busca, cadastro, edição e exclusão de pontos de coleta e distribuição, registro de doações e favoritos locais.
 
+Só para pontuar uma funcionalidade que é extra que não funciona:
+Registrar doação nesse ponto não funciona
+
 ## Estrutura de Pastas
 
 - `src/services/api.ts`: cliente HTTP centralizado (`API_BASE_URL`, `get`, `post`, `put`, `del`) que concentra todas as chamadas `fetch` e lança `ApiError` com o `status` HTTP em respostas de erro.
