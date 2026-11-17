@@ -1,6 +1,6 @@
 // Endereço do servidor Spring Boot na rede local (use o IP do computador, não localhost, para testar no celular).
 // Exemplo: 'http://192.168.1.100:8080/api/v1'
-export const API_BASE_URL = 'http://10.120.250.2:8080/api/v1';
+export const API_BASE_URL = 'http://192.168.56.1:8080/api/v1';
 
 export class ApiError extends Error {
     status: number;

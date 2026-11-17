@@ -7,7 +7,8 @@ import TelaCadastroPonto from './src/screens/TelaCadastroPonto';
 import TelaCadastroDoacao from './src/screens/TelaCadastroDoacao';
 import TelaMinhasDoacoes from './src/screens/TelaMinhasDoacoes';
 import TelaDetalheDoacao from './src/screens/TelaDetalheDoacao';
-import { Doacao } from './src/storage/doacoesStorage';
+import TelaMeusPontos from './src/screens/TelaMeusPontos';
+import { Doacao } from './src/types/doacao';
 import { Ponto } from './src/types/ponto';
 
 export type RootStackParamList = {
@@ -20,12 +21,12 @@ export type RootStackParamList = {
         | undefined;
     CadastroDoacao:
         | {
-              pontoId?: string;
               doacao?: Doacao;
           }
         | undefined;
     MinhasDoacoes: undefined;
-    DetalheDoacao: { doacao: Doacao };
+    DetalheDoacao: { id: string };
+    MeusPontos: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -57,7 +58,11 @@ function App() {
                     <Stack.Screen
                         name="CadastroDoacao"
                         component={TelaCadastroDoacao}
-                        options={{ title: 'Registrar Doação' }}
+                        options={({ route }) => ({
+                            title: route.params?.doacao
+                                ? 'Editar Doação'
+                                : 'Registrar Doação',
+                        })}
                     />
                     <Stack.Screen
                         name="MinhasDoacoes"
@@ -68,6 +73,11 @@ function App() {
                         name="DetalheDoacao"
                         component={TelaDetalheDoacao}
                         options={{ title: 'Detalhe da Doação' }}
+                    />
+                    <Stack.Screen
+                        name="MeusPontos"
+                        component={TelaMeusPontos}
+                        options={{ title: 'Meus Pontos' }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

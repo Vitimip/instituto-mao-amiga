@@ -34,6 +34,7 @@ function TelaListaPontos({ navigation }: Props) {
     const [carregandoMais, setCarregandoMais] = useState(false);
     const [erroApi, setErroApi] = useState<string | null>(null);
     const [ultimaPagina, setUltimaPagina] = useState(false);
+    const [refreshFavoritos, setRefreshFavoritos] = useState(0);
 
     // Refs para evitar chamadas duplicadas e condições de corrida na paginação/busca
     const paginaAtualRef = useRef(0);
@@ -171,6 +172,8 @@ function TelaListaPontos({ navigation }: Props) {
             ultimaPaginaRef.current = false;
             setUltimaPagina(false);
             carregarPagina(0, filtroAtivoRef.current, true, true);
+            // Força a recarga do estado de favoritos nos PontoItem
+            setRefreshFavoritos((prev) => prev + 1);
         }, [carregarPagina])
     );
 
@@ -224,6 +227,15 @@ function TelaListaPontos({ navigation }: Props) {
                 >
                     <Text style={styles.botaoDoacoesTexto}>
                         Minhas doações
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.botaoFavoritos}
+                    onPress={() => navigation.navigate('MeusPontos')}
+                >
+                    <Text style={styles.botaoFavoritosTexto}>
+                        Meus pontos
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -281,6 +293,7 @@ function TelaListaPontos({ navigation }: Props) {
                     renderItem={({ item }) => (
                         <PontoItem
                             ponto={item}
+                            refreshKey={refreshFavoritos}
                             onPress={() =>
                                 navigation.navigate('DetalhePonto', {
                                     id: item.id,
@@ -380,6 +393,22 @@ const styles = StyleSheet.create({
     },
     botaoDoacoesTexto: {
         color: '#FFFFFF',
+        fontWeight: 'bold',
+        fontSize: 13,
+    },
+    botaoFavoritos: {
+        flexGrow: 1,
+        borderWidth: 1,
+        borderColor: '#E53935',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 8,
+        paddingVertical: 11,
+        paddingHorizontal: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    botaoFavoritosTexto: {
+        color: '#E53935',
         fontWeight: 'bold',
         fontSize: 13,
     },

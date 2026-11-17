@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
     Alert,
-    Platform,
+    Modal,
     SafeAreaView,
     StyleSheet,
     Text,
@@ -10,81 +10,108 @@ import {
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App';
-import { excluirDoacao } from '../storage/doacoesStorage';
-import { buscarPorId } from '../services/pontosService';
+import { Doacao } from '../types/doacao';
+import { ApiError } from '../services/api';
+import { buscarPorId, excluir } from '../services/doacoesService';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DetalheDoacao'>;
 
-export default function TelaDetalheDoacao({ navigation, route }: Props) {
-    const doacao = route.params.doacao;
-    const [nomePonto, setNomePonto] = useState<string>(
-        doacao.pontoDestinoNome ?? 'Carregando...'
-    );
+export default function TelaDetalheDoacao({ route, navigation }: Props) {
+    const { id } = route.params;
+
+    const [doacao, setDoacao] = useState<Doacao | null>(null);
+    const [carregando, setCarregando] = useState(true);
+    const [erro, setErro] = useState<string | null>(null);
+    const [mostrarModalExcluir, setMostrarModalExcluir] = useState(false);
+    const [excluindo, setExcluindo] = useState(false);
 
     useEffect(() => {
-        let ativo = true;
-
-        async function carregarNomePonto() {
+        async function carregar() {
+            setCarregando(true);
+            setErro(null);
             try {
-                const ponto = await buscarPorId(doacao.pontoDestinoId);
-                if (ativo) {
-                    setNomePonto(ponto.nome);
-                }
-            } catch {
-                if (ativo) {
-                    setNomePonto(
-                        doacao.pontoDestinoNome ?? 'Ponto não encontrado'
+                const dados = await buscarPorId(id);
+                setDoacao(dados);
+            } catch (e) {
+                if (e instanceof ApiError && e.status === 404) {
+                    setErro('Doação não encontrada.');
+                } else {
+                    setErro(
+                        'Não foi possível carregar a doação. Verifique se o servidor está ligado.'
                     );
                 }
+            } finally {
+                setCarregando(false);
             }
         }
 
-        carregarNomePonto();
+        carregar();
+    }, [id]);
 
-        return () => {
-            ativo = false;
-        };
-    }, [doacao.pontoDestinoId, doacao.pontoDestinoNome]);
+    const handleEditar = useCallback(() => {
+        if (doacao) {
+            navigation.navigate('CadastroDoacao', { doacao });
+        }
+    }, [doacao, navigation]);
 
-    async function confirmarExclusao() {
-        if (Platform.OS === 'web') {
-            const confirmou = window.confirm(
-                'Tem certeza que deseja excluir esta doação?'
-            );
+    const handleExcluir = useCallback(() => {
+        setMostrarModalExcluir(true);
+    }, []);
 
-            if (!confirmou) {
-                return;
-            }
-
-            await excluirDoacao(doacao.id);
+    const handleConfirmarExcluir = useCallback(async () => {
+        setExcluindo(true);
+        try {
+            await excluir(id);
             navigation.goBack();
-            return;
+        } catch (e) {
+            if (e instanceof ApiError) {
+                Alert.alert(
+                    'Erro',
+                    e.message ??
+                        'Não foi possível excluir a doação. Tente novamente.'
+                );
+            } else {
+                Alert.alert(
+                    'Erro',
+                    'Erro inesperado ao excluir a doação. Tente novamente.'
+                );
+            }
+        } finally {
+            setExcluindo(false);
+            setMostrarModalExcluir(false);
         }
+    }, [id, navigation]);
 
-        Alert.alert(
-            'Excluir doação',
-            'Tem certeza que deseja excluir esta doação?',
-            [
-                {
-                    text: 'Cancelar',
-                    style: 'cancel',
-                },
-                {
-                    text: 'Excluir',
-                    style: 'destructive',
-                    onPress: async () => {
-                        await excluirDoacao(doacao.id);
-                        navigation.goBack();
-                    },
-                },
-            ]
+    const handleCancelarExcluir = useCallback(() => {
+        setMostrarModalExcluir(false);
+    }, []);
+
+    if (carregando) {
+        return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.centro}>
+                    <Text style={styles.mensagem}>Carregando doação...</Text>
+                </View>
+            </SafeAreaView>
         );
     }
 
-    function editar() {
-        navigation.navigate('CadastroDoacao', {
-            doacao,
-        });
+    if (erro !== null || doacao === null) {
+        return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.centro}>
+                    <Text style={styles.mensagemErro}>
+                        {erro ?? 'Doação não encontrada.'}
+                    </Text>
+                    <TouchableOpacity
+                        style={styles.botao}
+                        onPress={() => navigation.goBack()}
+                    >
+                        <Text style={styles.botaoTexto}>Voltar</Text>
+                    </TouchableOpacity>
+                </View>
+            </SafeAreaView>
+        );
     }
 
     return (
@@ -99,7 +126,9 @@ export default function TelaDetalheDoacao({ navigation, route }: Props) {
                 <Text style={styles.valor}>{doacao.quantidade}</Text>
 
                 <Text style={styles.rotulo}>Ponto de destino</Text>
-                <Text style={styles.valor}>{nomePonto}</Text>
+                <Text style={styles.valor}>
+                    {doacao.pontoDestino ?? 'Ponto não encontrado'}
+                </Text>
 
                 <Text style={styles.rotulo}>Data do registro</Text>
                 <Text style={styles.valor}>
@@ -107,21 +136,57 @@ export default function TelaDetalheDoacao({ navigation, route }: Props) {
                 </Text>
             </View>
 
-            <TouchableOpacity
-                style={styles.botaoEditar}
-                onPress={editar}
-                activeOpacity={0.7}
-            >
-                <Text style={styles.botaoEditarTexto}>Editar doação</Text>
-            </TouchableOpacity>
+            <View style={styles.botoesContainer}>
+                <TouchableOpacity
+                    style={[styles.botao, styles.botaoEditar]}
+                    onPress={handleEditar}
+                >
+                    <Text style={styles.botaoEditarTexto}>Editar</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.botaoExcluir}
-                onPress={confirmarExclusao}
-                activeOpacity={0.7}
+                <TouchableOpacity
+                    style={[styles.botao, styles.botaoExcluir]}
+                    onPress={handleExcluir}
+                >
+                    <Text style={styles.botaoExcluirTexto}>Excluir</Text>
+                </TouchableOpacity>
+            </View>
+
+            <Modal
+                visible={mostrarModalExcluir}
+                transparent
+                animationType="fade"
+                onRequestClose={handleCancelarExcluir}
             >
-                <Text style={styles.botaoExcluirTexto}>Excluir doação</Text>
-            </TouchableOpacity>
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalTitle}>Excluir doação</Text>
+                        <Text style={styles.modalMessage}>
+                            Tem certeza que deseja excluir esta doação?
+                        </Text>
+                        <View style={styles.modalButtons}>
+                            <TouchableOpacity
+                                style={[styles.modalButton, styles.modalButtonCancel]}
+                                onPress={handleCancelarExcluir}
+                                disabled={excluindo}
+                            >
+                                <Text style={styles.modalButtonCancelText}>
+                                    Cancelar
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[styles.modalButton, styles.modalButtonDelete]}
+                                onPress={handleConfirmarExcluir}
+                                disabled={excluindo}
+                            >
+                                <Text style={styles.modalButtonDeleteText}>
+                                    {excluindo ? 'Excluindo...' : 'Excluir'}
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
         </SafeAreaView>
     );
 }
@@ -154,14 +219,37 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#222222',
     },
-    botaoEditar: {
-        backgroundColor: '#1B3A5C',
+    centro: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+    },
+    mensagem: {
+        fontSize: 16,
+        color: '#757575',
+        textAlign: 'center',
+    },
+    mensagemErro: {
+        fontSize: 16,
+        color: '#C62828',
+        textAlign: 'center',
+        marginBottom: 16,
+    },
+    botoesContainer: {
+        flexDirection: 'row',
+        gap: 12,
+        marginTop: 24,
+    },
+    botao: {
+        flex: 1,
         borderRadius: 8,
         minHeight: 44,
-        paddingHorizontal: 12,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 20,
+    },
+    botaoEditar: {
+        backgroundColor: '#1B3A5C',
     },
     botaoEditarTexto: {
         color: '#FFFFFF',
@@ -169,14 +257,66 @@ const styles = StyleSheet.create({
     },
     botaoExcluir: {
         backgroundColor: '#C62828',
-        borderRadius: 8,
-        minHeight: 44,
-        paddingHorizontal: 12,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 8,
     },
     botaoExcluirTexto: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+    },
+    botaoTexto: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+    },
+    modalContent: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 20,
+        width: '100%',
+        maxWidth: 320,
+        alignItems: 'center',
+    },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1B3A5C',
+        marginBottom: 8,
+    },
+    modalMessage: {
+        fontSize: 14,
+        color: '#555555',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    modalButtons: {
+        flexDirection: 'row',
+        gap: 12,
+        width: '100%',
+    },
+    modalButton: {
+        flex: 1,
+        borderRadius: 8,
+        minHeight: 44,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    modalButtonCancel: {
+        borderWidth: 1,
+        borderColor: '#1B3A5C',
+    },
+    modalButtonCancelText: {
+        color: '#1B3A5C',
+        fontWeight: 'bold',
+    },
+    modalButtonDelete: {
+        backgroundColor: '#C62828',
+    },
+    modalButtonDeleteText: {
         color: '#FFFFFF',
         fontWeight: 'bold',
     },

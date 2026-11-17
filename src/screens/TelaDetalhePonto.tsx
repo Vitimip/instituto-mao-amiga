@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
     ActivityIndicator,
     Alert,
@@ -16,6 +16,7 @@ import { RootStackParamList } from '../../App';
 import { Ponto } from '../types/ponto';
 import { buscarPorId, excluir } from '../services/pontosService';
 import { ApiError } from '../services/api';
+import { ehFavorito, toggleFavorito } from '../storage/favoritosStorage';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DetalhePonto'>;
 
@@ -28,6 +29,7 @@ function TelaDetalhePonto({ route, navigation }: Props) {
     const [naoEncontrado, setNaoEncontrado] = useState(false);
     const [erroConexao, setErroConexao] = useState<string | null>(null);
     const [erroExclusao, setErroExclusao] = useState<string | null>(null);
+    const [favorito, setFavorito] = useState(false);
 
     const carregarPonto = useCallback(async () => {
         if (!id) {
@@ -43,6 +45,7 @@ function TelaDetalhePonto({ route, navigation }: Props) {
         try {
             const dados = await buscarPorId(id);
             setPonto(dados);
+            ehFavorito(id).then(setFavorito);
         } catch (erro) {
             if (erro instanceof ApiError && erro.status === 404) {
                 setNaoEncontrado(true);
@@ -83,6 +86,12 @@ function TelaDetalhePonto({ route, navigation }: Props) {
         } finally {
             setExcluindo(false);
         }
+    }
+
+    async function toggleFav() {
+        if (!ponto) return;
+        const novaLista = await toggleFavorito(ponto.id);
+        setFavorito(novaLista.includes(ponto.id));
     }
 
     function confirmarExclusao() {
@@ -174,7 +183,19 @@ function TelaDetalhePonto({ route, navigation }: Props) {
                 <Text style={styles.titulo}>Detalhes do Ponto</Text>
 
                 <View style={styles.card}>
-                    <Text style={styles.nome}>{ponto.nome}</Text>
+                    <View style={styles.cardCabecalho}>
+                        <Text style={styles.nome}>{ponto.nome}</Text>
+                        <TouchableOpacity
+                            style={styles.botaoFavorito}
+                            onPress={toggleFav}
+                            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+                            activeOpacity={0.6}
+                        >
+                            <Text style={styles.iconeFavorito}>
+                                {favorito ? '♥' : '♡'}
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
 
                     <Text style={styles.rotulo}>Endereço</Text>
                     <Text style={styles.valor}>{ponto.endereco}</Text>
@@ -224,11 +245,7 @@ function TelaDetalhePonto({ route, navigation }: Props) {
 
                 <TouchableOpacity
                     style={styles.botaoPrincipal}
-                    onPress={() =>
-                        navigation.navigate('CadastroDoacao', {
-                            pontoId: ponto.id,
-                        })
-                    }
+                    onPress={() => navigation.navigate('CadastroDoacao')}
                     disabled={excluindo}
                 >
                     <Text style={styles.botaoPrincipalTexto}>
@@ -284,11 +301,27 @@ const styles = StyleSheet.create({
         padding: 16,
         backgroundColor: '#FAFAFA',
     },
+    cardCabecalho: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 8,
+    },
     nome: {
+        flex: 1,
         fontSize: 20,
         fontWeight: 'bold',
         color: '#1B3A5C',
-        marginBottom: 8,
+    },
+    botaoFavorito: {
+        minWidth: 44,
+        minHeight: 44,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    iconeFavorito: {
+        fontSize: 28,
+        color: '#E53935',
     },
     rotulo: {
         fontSize: 13,

@@ -1,13 +1,33 @@
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Ponto } from '../types/ponto';
+import { ehFavorito, toggleFavorito } from '../storage/favoritosStorage';
 
 type Props = {
     ponto: Ponto;
     onPress: () => void;
+    onToggleFavorito?: (id: string) => void;
+    refreshKey?: number;
 };
 
-export default function PontoItem({ ponto, onPress }: Props) {
+export default function PontoItem({ ponto, onPress, onToggleFavorito, refreshKey }: Props) {
     const isColeta = ponto.tipo.toLowerCase() === 'coleta';
+    const [favorito, setFavorito] = useState(false);
+
+    const recarregarFavorito = () => {
+        ehFavorito(ponto.id).then(setFavorito);
+    };
+
+    useEffect(() => {
+        recarregarFavorito();
+    }, [ponto.id, refreshKey]);
+
+    async function handleFavorito(e: any) {
+        e.stopPropagation();
+        const novaLista = await toggleFavorito(ponto.id);
+        setFavorito(novaLista.includes(ponto.id));
+        onToggleFavorito?.(ponto.id);
+    }
 
     return (
         <TouchableOpacity style={styles.item} onPress={onPress} activeOpacity={0.75}>
@@ -30,6 +50,16 @@ export default function PontoItem({ ponto, onPress }: Props) {
                         {ponto.tipo}
                     </Text>
                 </View>
+                <TouchableOpacity
+                    style={styles.botaoFavorito}
+                    onPress={handleFavorito}
+                    hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+                    activeOpacity={0.6}
+                >
+                    <Text style={styles.iconeFavorito}>
+                        {favorito ? '♥' : '♡'}
+                    </Text>
+                </TouchableOpacity>
             </View>
 
             <Text style={styles.endereco}>
@@ -95,5 +125,16 @@ const styles = StyleSheet.create({
         fontSize: 13,
         color: '#757575',
         marginTop: 4,
+    },
+    botaoFavorito: {
+        minWidth: 44,
+        minHeight: 44,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 8,
+    },
+    iconeFavorito: {
+        fontSize: 24,
+        color: '#E53935',
     },
 });

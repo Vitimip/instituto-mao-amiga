@@ -11,7 +11,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/instituto-mao-amiga" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/instituto-mao-amiga" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -21,29 +27,29 @@
 }</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/Vitimip/instituto-mao-amigav1.git",
+    "url": "https://github.com/Vitimip/instituto-mao-amiga",
     "accountId": "7bdc3c19-fe1e-42fd-a7c5-6de1f79575b7"
   }
 }]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000001963647265" />
-      <entry key="MS500" value="1.051260625662717" />
-      <entry key="S2" value="2.0532581321283616" />
-      <entry key="S5" value="4.649300713934939" />
-      <entry key="S10" value="8.141631882442539" />
-      <entry key="S30" value="18.49268508699903" />
-      <entry key="S60" value="30.99056773141791" />
-      <entry key="M2" value="51.3747333757179" />
-      <entry key="M5" value="92.31625492406134" />
-      <entry key="M10" value="132.75130369030637" />
-      <entry key="M15" value="160.97800538841494" />
-      <entry key="M30" value="217.03449148933913" />
-      <entry key="H1" value="271.9711698898142" />
-      <entry key="H2" value="313.2217184262315" />
-      <entry key="H4" value="338.95303893313314" />
-      <entry key="D1" value="363.65775082264776" />
-      <entry key="W1" value="368.2281340045057" />
+      <entry key="MS100" value="1.6739030164936457" />
+      <entry key="MS500" value="2.7987907315188685" />
+      <entry key="S2" value="5.874200837033255" />
+      <entry key="S5" value="9.225100078214227" />
+      <entry key="S10" value="11.26307215276134" />
+      <entry key="S30" value="14.782000028005557" />
+      <entry key="S60" value="19.411633866326987" />
+      <entry key="M2" value="26.107201785960626" />
+      <entry key="M5" value="40.562790486187474" />
+      <entry key="M10" value="64.87919376873324" />
+      <entry key="M15" value="89.93981039832649" />
+      <entry key="M30" value="165.35730494474222" />
+      <entry key="H1" value="278.4643014753216" />
+      <entry key="H2" value="391.5122323661864" />
+      <entry key="H4" value="474.8522406196711" />
+      <entry key="D1" value="564.3929250730416" />
+      <entry key="W1" value="581.9950879829793" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -65,23 +71,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.965936518600633" />
-      <entry key="MS500" value="1.0439913281515714" />
-      <entry key="S2" value="2.0495266068920315" />
-      <entry key="S5" value="4.645692727441247" />
-      <entry key="S10" value="8.138338706478809" />
-      <entry key="S30" value="18.49007243667495" />
-      <entry key="S60" value="30.987963376281925" />
-      <entry key="M2" value="51.37105969337504" />
-      <entry key="M5" value="92.31126274559271" />
-      <entry key="M10" value="132.74647129022154" />
-      <entry key="M15" value="160.97355036849382" />
-      <entry key="M30" value="217.03095579491685" />
-      <entry key="H1" value="271.9687429258856" />
-      <entry key="H2" value="313.22025614529474" />
-      <entry key="H4" value="338.95223016488586" />
-      <entry key="D1" value="363.657603612902" />
-      <entry key="W1" value="368.2281126465888" />
+      <entry key="MS100" value="1.6201608224764141" />
+      <entry key="MS500" value="2.762443952214086" />
+      <entry key="S2" value="5.786855096819663" />
+      <entry key="S5" value="9.155782517140748" />
+      <entry key="S10" value="11.218619505347654" />
+      <entry key="S30" value="14.763878875225796" />
+      <entry key="S60" value="19.40090804888831" />
+      <entry key="M2" value="26.10039403060406" />
+      <entry key="M5" value="40.55858587332131" />
+      <entry key="M10" value="64.87563061964498" />
+      <entry key="M15" value="89.93646201767216" />
+      <entry key="M30" value="165.35425646776943" />
+      <entry key="H1" value="278.46173193712804" />
+      <entry key="H2" value="391.51040551077205" />
+      <entry key="H4" value="474.85112249499207" />
+      <entry key="D1" value="564.3927014736751" />
+      <entry key="W1" value="581.995054985516" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -101,7 +107,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "restructure-commits",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/vitor/OneDrive/Desktop/instituto-mao-amiga",
     "node.js.detected.package.eslint": "true",
@@ -113,6 +119,57 @@
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="instituto-mao-amiga" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="instituto-mao-amiga" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="instituto-mao-amiga" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="instituto-mao-amiga" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
