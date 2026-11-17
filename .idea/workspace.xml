@@ -19,31 +19,31 @@
     &quot;assignee&quot;: &quot;Vitimip&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Vitimip/instituto-mao-amiga.git&quot;,
-    &quot;accountId&quot;: &quot;7bdc3c19-fe1e-42fd-a7c5-6de1f79575b7&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Vitimip/instituto-mao-amigav1.git",
+    "accountId": "7bdc3c19-fe1e-42fd-a7c5-6de1f79575b7"
   }
-}</component>
+}]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.6200418012975049" />
-      <entry key="MS500" value="2.8505379776650397" />
-      <entry key="S2" value="6.192312013347259" />
-      <entry key="S5" value="8.894535002408652" />
-      <entry key="S10" value="10.271777270495623" />
-      <entry key="S30" value="12.2251273413852" />
-      <entry key="S60" value="16.88262275795504" />
-      <entry key="M2" value="27.696129024607604" />
-      <entry key="M5" value="52.708781143575365" />
-      <entry key="M10" value="81.0714604382246" />
-      <entry key="M15" value="103.31448467167225" />
-      <entry key="M30" value="150.82185249910006" />
-      <entry key="H1" value="198.65987649517405" />
-      <entry key="H2" value="234.6168782156675" />
-      <entry key="H4" value="256.97799730250404" />
-      <entry key="D1" value="278.3808961623109" />
-      <entry key="W1" value="282.33282205149067" />
+      <entry key="MS100" value="1.0000001963647265" />
+      <entry key="MS500" value="1.051260625662717" />
+      <entry key="S2" value="2.0532581321283616" />
+      <entry key="S5" value="4.649300713934939" />
+      <entry key="S10" value="8.141631882442539" />
+      <entry key="S30" value="18.49268508699903" />
+      <entry key="S60" value="30.99056773141791" />
+      <entry key="M2" value="51.3747333757179" />
+      <entry key="M5" value="92.31625492406134" />
+      <entry key="M10" value="132.75130369030637" />
+      <entry key="M15" value="160.97800538841494" />
+      <entry key="M30" value="217.03449148933913" />
+      <entry key="H1" value="271.9711698898142" />
+      <entry key="H2" value="313.2217184262315" />
+      <entry key="H4" value="338.95303893313314" />
+      <entry key="D1" value="363.65775082264776" />
+      <entry key="W1" value="368.2281340045057" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -65,23 +65,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.5901991484313016" />
-      <entry key="MS500" value="2.8130984838664412" />
-      <entry key="S2" value="6.113096671215983" />
-      <entry key="S5" value="8.840480615195629" />
-      <entry key="S10" value="10.239234081653992" />
-      <entry key="S30" value="12.210835463138714" />
-      <entry key="S60" value="16.87091792452756" />
-      <entry key="M2" value="27.685767969150554" />
-      <entry key="M5" value="52.700994292337256" />
-      <entry key="M10" value="81.0655111628179" />
-      <entry key="M15" value="103.30941701103465" />
-      <entry key="M30" value="150.81813265292678" />
-      <entry key="H1" value="198.65742206434678" />
-      <entry key="H2" value="234.61542906290416" />
-      <entry key="H4" value="256.977204030228" />
-      <entry key="D1" value="278.3807530267638" />
-      <entry key="W1" value="282.3328013159318" />
+      <entry key="MS100" value="0.965936518600633" />
+      <entry key="MS500" value="1.0439913281515714" />
+      <entry key="S2" value="2.0495266068920315" />
+      <entry key="S5" value="4.645692727441247" />
+      <entry key="S10" value="8.138338706478809" />
+      <entry key="S30" value="18.49007243667495" />
+      <entry key="S60" value="30.987963376281925" />
+      <entry key="M2" value="51.37105969337504" />
+      <entry key="M5" value="92.31126274559271" />
+      <entry key="M10" value="132.74647129022154" />
+      <entry key="M15" value="160.97355036849382" />
+      <entry key="M30" value="217.03095579491685" />
+      <entry key="H1" value="271.9687429258856" />
+      <entry key="H2" value="313.22025614529474" />
+      <entry key="H4" value="338.95223016488586" />
+      <entry key="D1" value="363.657603612902" />
+      <entry key="W1" value="368.2281126465888" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -101,7 +101,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "restructure-commits",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/vitor/OneDrive/Desktop/instituto-mao-amiga",
     "node.js.detected.package.eslint": "true",
